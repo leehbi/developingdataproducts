@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products">
+  <meta name="author" content="Leehbi">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products</h1>
+    <h2>Sports Activity Prediction</h2>
+    <p>Leehbi<br/>Data Analyst</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>This shiny app takes raw data to predict which activity is being performed by 20 different athletes</h3>
+
+<h3>The app cleans the data and performs cross validation of a random forest model to make the prediction</h3>
+
+<h3>On the Input tab you&#39;ll find settings for parameters to tune the model</h3>
+
+<p><img src="%22UM.png%22" alt="width"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Querying Yelp</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">y &lt;- yelp.data(category=category, city=city,radius=radius)
+y$df
+</code></pre>
+
+<pre><code>##        business.names               X1                X2
+## 1  Telfords Warehouse        53.193241         -2.898771
+## 2    Old Harkers Arms        53.193418         -2.881248
+## 3          Albion Inn       53.1884117          -2.88802
+## 4       Bear &amp; Billet        53.186744         -2.890165
+## 5       Fiesta Havana       53.1898956        -2.8932841
+## 6        The Botanist       53.1912196        -2.8902453
+## 7    Ye Olde Boot Inn 53.1905138631287 -2.89043889005541
+## 8           Barlounge        53.189836         -2.893896
+## 9      Kash Tap Rooms        53.196791         -2.883382
+## 10    The Brewery Tap        53.186744         -2.890165
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Predicting the optimal route</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">source(&#39;~/Slides/Slides/functions.R&#39;)
+x &lt;- distance.matrix(y$LatLong)
+</code></pre>
+
+<pre><code>## Error in nrow(y$df): object &#39;y&#39; not found
+</code></pre>
+
+<pre><code class="r">w.route&lt;-tsp.route(x,y$Names)
+</code></pre>
+
+<pre><code>## Error in matrix(places, nrow = items, ncol = items, dimnames = list(names, : object &#39;x&#39; not found
+</code></pre>
+
+<pre><code class="r">w.route
+</code></pre>
+
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;w.route&#39; not found
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The full code book for this model can be found <a href="http://rpubs.com/leehbi/tour">here</a></p>
+
+<p>The Shiny App can be found <a href="http://leehbi.shinyapps.io/UltimateTour/">here</a></p>
+
+<p>GitHub Repo is <a href="https://github.com/leehbi/developingdataproducts">here</a></p>
+
+<p>Thank you.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Querying Yelp'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Predicting the optimal route'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Conclusion'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
